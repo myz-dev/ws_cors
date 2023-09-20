@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8" />
+    <title>Axum Cors WS test</title>
+</head>
+
+<body>
+    <script>
+        const URL = "ws://localhost:4000/ws";
+        const ws = new WebSocket(URL);
+        ws.addEventListener("open", () => {
+            console.log("Connected to WS Server");
+        });
+        ws.addEventListener("message", (event) => {
+            console.log("Message from WS Server", event.data);
+        });
+        ws.addEventListener("close", () => {
+            console.log("Disconnected from WS Server");
+        });
+        setTimeout(() => {
+            ws.send("Hello Server!");
+        }, 1000);
+    </script>
+    <div>
+        <h1>Axum Cors WS test</h1>
+    </div>
+</body>
+
+</html>
